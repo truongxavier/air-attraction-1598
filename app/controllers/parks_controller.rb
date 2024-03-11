@@ -22,7 +22,7 @@ class ParksController < ApplicationController
 
   def destroy
     @park.destroy
-    redirect_to, parks_path
+    redirect_to parks_path
   end
 
   def edit; end
