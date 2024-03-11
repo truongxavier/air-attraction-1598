@@ -1,2 +1,13 @@
 <h1>Parks#new</h1>
-<p>Find me in app/views/parks/new.html.erb</p>
+<%= simple_form_for @park do |f| %>
+  <%= f.input :name %>
+  <%= f.input :location %>
+  <%= f.input :park_description %>
+  <%= f.input :chambers_description %>
+  <%= f.input :restaurants_description %>
+  <%= f.input :price %>
+  <%= f.input :park_photos, as: :file, input_html: {multiple: true} %>
+  <%= f.input :chambers_photos, as: :file, input_html: {multiple: true} %>
+  <%= f.input :restaurants_photos, as: :file, input_html: {multiple: true} %>
+  <%= f.submit %>
+<% end %>
