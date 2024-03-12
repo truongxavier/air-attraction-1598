@@ -10,4 +10,14 @@ class RentalsController < ApplicationController
       #TODO render :new, status: :unprocessable_entity
     end
   end
+
+  def accept
+    @rental = Rental.find(params[:id])
+    @rental.validated = true
+  end
+
+  def decline
+    @rental = Rental.find(params[:id])
+    @rental.validated = false
+  end
 end
