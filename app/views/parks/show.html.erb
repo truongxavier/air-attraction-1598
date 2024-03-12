@@ -1,2 +1,27 @@
-<h1>Parks#show</h1>
-<p>Find me in app/views/parks/show.html.erb</p>
+<h1><%= @park.name %></h1>
+
+<h3><%= @park.location %></h3>
+
+<h5>description of the park:</h5>
+<p><%= @park.park_description %></p>
+<% @park.park_photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+
+<h5>description of the park's chambers:</h5>
+<p><%= @park.chambers_description %></p>
+<% @park.chambers_photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+
+<h5>description of the park's restaurants:</h5>
+<p><%= @park.restaurants_description %></p>
+<% @park.restaurants_photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+
+
+<h4>Price: <%= @park.price %></h4>
+
+ <%= link_to 'Back', parks_path %>
+ <%= link_to 'Edit your Park', edit_park_path(@park) %>
