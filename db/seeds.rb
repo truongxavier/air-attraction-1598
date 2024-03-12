@@ -177,7 +177,7 @@ park_espace.save!
 
 puts 'park jungle'
 park_jungle = Park.new(
-  name: "Sublime Amazonia Parc",
+  name: "Sublime Amazonia Park",
   park_description: "Plongez dans l'aventure au cœur de la jungle luxuriante d'Amazonia Parc! Découvrez des attractions palpitantes cachées parmi les arbres centenaires et les lianes mystérieuses. Écoutez le rugissement des cascades et le chant des oiseaux exotiques tout en explorant des mondes perdus. Amazonia Parc, l'évasion ultime pour les aventuriers de tous âges. Osez l'aventure, vivez la légende! 🌿🐒🎢",
   chambers_description: "Évadez-vous dans l'écrin de verdure d'Amazonia Parc et reposez-vous dans nos chambres luxueuses, nichées au cœur de la jungle. Laissez-vous bercer par les sons apaisants de la nature tout en profitant du confort moderne et d'un service exceptionnel. Nos suites, véritables havres de paix, vous offrent une immersion totale dans un cadre exotique et raffiné. Amazonia Parc, où le luxe rencontre l'aventure. 🌴✨🛏️",
   restaurants_description: "Au cœur de la jungle mystérieuse, Amazonia Parc vous invite à un festin sensoriel inoubliable. Nos restaurants luxueux, perchés dans les arbres, offrent une cuisine raffinée aux saveurs exotiques. Dégustez des plats élaborés avec les trésors de la forêt, dans un cadre où la nature s'invite à votre table. Amazonia Parc, l'expérience culinaire qui éveille l'aventurier gourmet en vous. 🍃🍴✨",
@@ -225,7 +225,7 @@ park_jungle.save!
 
 puts 'park Desert'
 park_desert = Park.new(
-  name: "Monstruous Desert Parc",
+  name: "Monstruous Desert Park",
   park_description: "Découvrez l'Oasis des Aventuriers!🌵 Au cœur du désert, un monde d'aventures vous attend! 🎢Venez vivre l'expérience ultime dans un parc d'attraction unique où le frisson de la vitesse rencontre la majesté des dunes. À l'Oasis des Aventuriers, chaque manège est une épopée, chaque attraction une découverte.",
   chambers_description: "Évasion Nocturne à l'Oasis des Rêves!🌟 Après une journée d'aventures, reposez-vous sous les étoiles du désert. 🛏️ À l'Oasis des Rêves, chaque chambre est un sanctuaire de confort au milieu des sables. Imaginez-vous endormi sous un ciel étoilé, dans une chambre conçue pour refléter la beauté mystique du déser",
   restaurants_description: "Savourez l'Aventure à la Table des Mirages!🍴 Découvrez les délices culinaires au cœur du désert enchanté. 🌴 Au parc d'attraction des Dunes Enchantées, nos restaurants vous invitent à un voyage gastronomique inoubliable. Laissez-vous transporter par des saveurs exotiques dans un cadre époustouflant où le sable rencontre les étoiles.",
@@ -268,8 +268,55 @@ file = URI.open(image_url)
 name = "restaurant#{count}.jpeg"
 park_desert.restaurants_photos.attach(io: file, filename: name, content_type: "image/png")
 end
-
 park_desert.save!
+
+puts 'Frozen park North pole'
+park_frozen = Park.new(
+  name: "Frozen North pole Park",
+  park_description: "Venez vivre la magie de l'Arctique au Parc d'Attractions Polaire! 🌟 “Aventure Glacée” 🌟 Plongez dans un monde où le frisson de l'aventure rencontre la splendeur des aurores boréales. Découvrez des montagnes russes qui serpentent à travers des glaciers scintillants, des manèges qui vous feront tournoyer sous les étoiles, et des spectacles éblouissants qui réchaufferont votre cœur malgré le froid polaire",
+  chambers_description: "Découvrez le luxe étoilé au “Palais de Glace”! ✨ “Nuits Polaires” ✨ Au cœur du parc d'attractions arctique, nos chambres luxueuses vous invitent à un séjour où le confort rencontre l'immensité glacée. Dormez sous les aurores boréales dans nos suites exclusives, dotées de dômes transparents pour une expérience céleste inoubliable.",
+  restaurants_description: "“Gastronomie des Glaces” - Un festin au sommet du monde!🍴 “Saveurs Sublimes” 🍴 Découvrez nos restaurants luxueux, nichés au cœur d'un paysage hivernal époustouflant. Laissez-vous transporter par une cuisine étoilée où chaque plat raconte l'histoire des terres enneigées du pôle Nord.🍷 “Ambiance Cristalline” 🍷 Dans un décor de rêve fait de glace et de lumière douce, nos sommeliers vous guideront à travers une sélection de vins exquis, parfaits pour accompagner vos mets délicats.",
+  location: "pôle nord",
+  price: 75_000
+)
+park_frozen.user = user_bill
+
+images_to_upload = ['https://res.cloudinary.com/dk7qaea1j/image/upload/v1710274548/air-attraction/frozen/park2_bqlzuv.jpg',
+                    'https://res.cloudinary.com/dk7qaea1j/image/upload/v1710274545/air-attraction/frozen/park1_c29lg5.jpg',
+                    'https://res.cloudinary.com/dk7qaea1j/image/upload/v1710274550/air-attraction/frozen/park3_bgsyq0.jpg',
+                    'https://res.cloudinary.com/dk7qaea1j/image/upload/v1710274553/air-attraction/frozen/park4_lqedsp.jpg']
+count = 0
+images_to_upload.each do |image_url|
+  count += 1
+  file = URI.open(image_url)
+  name = "park#{count}.jpeg"
+  park_frozen.park_photos.attach(io: file, filename: name, content_type: "image/png")
+end
+images_to_upload = ['https://res.cloudinary.com/dk7qaea1j/image/upload/v1710274542/air-attraction/frozen/chamber4_oydjyc.jpg',
+                    'https://res.cloudinary.com/dk7qaea1j/image/upload/v1710274537/air-attraction/frozen/chamber2_k9fnwu.jpg',
+                    'https://res.cloudinary.com/dk7qaea1j/image/upload/v1710274540/air-attraction/frozen/chamber3_rwecac.jpg',
+                    'https://res.cloudinary.com/dk7qaea1j/image/upload/v1710274535/air-attraction/frozen/chamber1_x2bxit.jpg']
+count = 0
+images_to_upload.each do |image_url|
+  count += 1
+  file = URI.open(image_url)
+  name = "chamber#{count}.jpeg"
+  park_frozen.chambers_photos.attach(io: file, filename: name, content_type: "image/png")
+end
+
+images_to_upload = ['https://res.cloudinary.com/dk7qaea1j/image/upload/v1710274556/air-attraction/frozen/restaurant1_hs6jen.jpg',
+                    'https://res.cloudinary.com/dk7qaea1j/image/upload/v1710274558/air-attraction/frozen/restaurant2_higbz4.jpg',
+                    'https://res.cloudinary.com/dk7qaea1j/image/upload/v1710274561/air-attraction/frozen/restaurant3_itvkr4.jpg',
+                    'https://res.cloudinary.com/dk7qaea1j/image/upload/v1710274564/air-attraction/frozen/restaurant4_qdeo7l.jpg']
+count = 0
+images_to_upload.each do |image_url|
+count += 1
+file = URI.open(image_url)
+name = "restaurant#{count}.jpeg"
+park_frozen.restaurants_photos.attach(io: file, filename: name, content_type: "image/png")
+end
+
+park_frozen.save!
 
 puts 'création rentals ocean'
 ocean_rental_01 = Rental.new(
