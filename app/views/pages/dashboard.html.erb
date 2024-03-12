@@ -1,0 +1,42 @@
+<h1>Welcome on your Dashboard</h1>
+<p><%= link_to 'add your park', new_park_path %></p>
+
+
+<%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>
+<div>
+<%= current_user.username %>
+</div>
+<div>
+<%= current_user.email %>
+</div>
+
+<div>
+<h2>list of your parks:</h2>
+<% current_user.parks.each do |park| %>
+  <ul>
+  <li><%= park.name %><%= link_to "delete the park", park_path(park), data: { turbo_method: :delete, turbo_confirm: "are you sure?"} %></li>
+  </ul>
+<% end %>
+</div>
+
+
+
+<div>
+  <h3>list of your own bookings:</h3>
+  <ul>
+    <% current_user.rentals.each do |rental| %>
+      <li><%= rental.park.name %> </li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <h3>list of your parks bookings:</h3>
+  <ul>
+  <% if current_user.parks === true %>
+    <% current_user.parks.rentals do |rental| %>
+    <li><%= rental.park.name %> <%= link_to 'accept', accept_rental_path(rental) %> <%= link_to 'Decline', decline_rental_path(rental) %></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>

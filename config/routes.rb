@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   end
   patch '/rentals/:id', to: "rentals#accept", as: :accept_rental
   patch '/rentals/:id', to: "rentals#decline", as: :decline_rental
+
+  get '/dashboard', to: "pages#dashboard"
 end

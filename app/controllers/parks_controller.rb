@@ -4,7 +4,9 @@ class ParksController < ApplicationController
     @parks = Park.all
   end
 
-  def show; end
+  def show
+    @rental = Rental.new
+  end
 
   def new
     @park = Park.new
@@ -22,7 +24,7 @@ class ParksController < ApplicationController
 
   def destroy
     @park.destroy
-    redirect_to parks_path
+    redirect_to dashboard_path
   end
 
   def edit; end
