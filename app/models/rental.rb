@@ -5,6 +5,5 @@ class Rental < ApplicationRecord
 
   validates :arrival_date, presence: true
   validates :arrival_date, presence: true
-  validates :visitor_number, presence: true
-  
+  validates :visitors_number, presence: true
 end
