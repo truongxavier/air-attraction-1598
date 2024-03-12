@@ -1,2 +1,12 @@
-<h1>Parks#index</h1>
-<p>Find me in app/views/parks/index.html.erb</p>
+<h1>Look Out On All The Fantastical Theme Parks, We Have Around The World!!!!</h1>
+
+<% @parks.each do |park| %>
+  <div class="card-product">
+    <div class="card-product-infos">
+      <h2><%= park.name %></h2>
+      <h3><%= park.location %></h3>
+      <h4><%= park.price %></h4>
+    </div>
+    <%= link_to 'Show More The Details', park_path(park) %>
+  </div>
+<% end %>
