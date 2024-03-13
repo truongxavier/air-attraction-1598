@@ -4,6 +4,7 @@ class RentalsController < ApplicationController
     @rental.user = current_user
     @park = Park.find(params[:park_id])
     @rental.park = @park
+
     if @rental.save!
       redirect_to park_path(@park)
     else

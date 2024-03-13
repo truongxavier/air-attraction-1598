@@ -6,7 +6,7 @@
         <%= cl_image_tag(park.park_photos[0].key, class:"imgpark") %>
         <div class="card-park-infos">
           <div>
-            <h2><%= link_to "park.name", park_path(park) %></h2>
+            <h2><%= link_to park.name, park_path(park) %></h2>
             <p><%= park.location %></p>
           </div>
           <h2 class="card-park-pricing"><%= park.price %>$</h2>
@@ -15,5 +15,8 @@
       </div>
     <% end %>
   </div>
-  <img id="map" src='https://api.mapbox.com/[...]?access_token=YOUR-TOKEN-HERE'>
+  <div style="width: 100%; height: 100vh;" class='mx-3'
+    data-controller="map"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>

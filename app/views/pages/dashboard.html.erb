@@ -33,9 +33,11 @@
 <div>
   <h3>list of your parks bookings:</h3>
   <ul>
-  <% if current_user.parks === true %>
-    <% current_user.parks.rentals do |rental| %>
-    <li><%= rental.park.name %> <%= link_to 'accept', accept_rental_path(rental) %> <%= link_to 'Decline', decline_rental_path(rental) %></li>
+  <% if current_user.parks.any? %>
+    <% current_user.parks.each do |park| %>
+      <% park.rentals.each do |rental| %>
+        <li><%= rental.park.name %> <%= rental.user.username %> <%= link_to 'accept', accept_rental_path(rental) %> <%= link_to 'Decline', decline_rental_path(rental) %></li>
+      <% end %>
     <% end %>
   <% end %>
   </ul>
