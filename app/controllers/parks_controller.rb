@@ -8,7 +8,6 @@ class ParksController < ApplicationController
   def show
     @rental = Rental.new
     @park_review = ParkReview.new
-    @park_reviews = ParkReview.all
   end
 
   def new

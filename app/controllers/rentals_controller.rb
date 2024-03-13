@@ -20,4 +20,10 @@ class RentalsController < ApplicationController
     @rental = Rental.find(params[:id])
     @rental.validated = false
   end
+
+  private
+
+  def rental_params
+    params.require(:rental).permit(:arrival_date, :departure_date, :visitors_number)
+  end
 end
