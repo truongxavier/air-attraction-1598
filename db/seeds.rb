@@ -85,7 +85,7 @@ park_ocean = Park.new(
   park_description: "Plongez dans l'aventure avec le Parc d'Attractions Sous-Marin ! 🌊 Imaginez un monde où vous pouvez nager avec les dauphins, explorer des récifs coralliens colorés, et découvrir des créatures marines mystérieuses, tout cela sous 2000 mètres de profondeur. Bienvenue au Parc d'Attractions Sous-Marin, le premier de son genre, situé sous les vagues scintillantes de l'océan.",
   chambers_description: "Imaginez-vous endormir sous un ciel étoilé d'anémones de mer scintillantes et vous réveiller au spectacle des dauphins jouant dans les eaux turquoise. Nos chambres somptueuses offrent une expérience sous-marine inégalée qui transcende l'ordinaire. Chaque chambre est un chef-d'œuvre d'architecture et de design, avec des murs de verre offrant une vue panoramique sur l'océan et sa vie marine fascinante. Les intérieurs sont conçus avec un sens du luxe et du confort, avec des lits douillets, des salles de bains modernes et toutes les commodités modernes pour rendre votre séjour aussi confortable que possible",
   restaurants_description: "Mais ce n'est pas tout ! Notre parc est également équipé de restaurants sous-marins où vous pouvez déguster des délices culinaires tout en admirant la vue panoramique de l'océan.",
-  location: "océan indien",
+  location: "Rangiroa polynésie française",
   price: 10_000
 )
 park_ocean.user = user_elon
@@ -133,7 +133,7 @@ park_espace = Park.new(
   park_description: "Imaginez un lieu où les étoiles ne sont pas seulement au-dessus de vous, mais tout autour. OrbitaParc, la première station spatiale de loisirs, vous invite à vivre une expérience inoubliable en orbite autour de la Terre. Flottez en apesanteur, dansez sous les aurores boréales et dormez sous un dôme transparent avec vue sur l'infini. Venez toucher l'univers du bout des doigts et repoussez les frontières de l'amusement. OrbitaParc, là où les rêves deviennent réalité parmi les étoiles. 🌌✨",
   chambers_description: "Découvrez le luxe infini d'OrbitaParc, où chaque chambre est une fenêtre sur l'univers. Nos suites spacieuses offrent une vue imprenable sur la Terre et les étoiles, avec des commodités de première classe pour assurer votre confort et votre sécurité. Imaginez-vous vous endormir sous un ciel étoilé et vous réveiller avec le lever du soleil sur la planète bleue. OrbitaParc, l'expérience spatiale ultime où vos rêves parmi les étoiles deviennent réalité. 🚀✨",
   restaurants_description: "Savourez une gastronomie étoilée à OrbitaParc, où chaque repas est une célébration de l'innovation culinaire et de la beauté céleste. Nos restaurants luxueux vous proposent des plats exquis préparés par des chefs de renom, dans un cadre où chaque fenêtre offre une vue spectaculaire sur la Terre qui défile. Dînez au-delà des étoiles et vivez une expérience sensorielle unique, où le goût et la vue se mêlent à l'apesanteur. OrbitaParc, une aventure gastronomique inoubliable au cœur de l'espace. 🌟🍽️✨",
-  location: "océan pacifique",
+  location: "Terres australes et antartiques françaises",
   price: 200_000
 )
 park_espace.user = user_jeff
@@ -181,7 +181,7 @@ park_jungle = Park.new(
   park_description: "Plongez dans l'aventure au cœur de la jungle luxuriante d'Amazonia Parc! Découvrez des attractions palpitantes cachées parmi les arbres centenaires et les lianes mystérieuses. Écoutez le rugissement des cascades et le chant des oiseaux exotiques tout en explorant des mondes perdus. Amazonia Parc, l'évasion ultime pour les aventuriers de tous âges. Osez l'aventure, vivez la légende! 🌿🐒🎢",
   chambers_description: "Évadez-vous dans l'écrin de verdure d'Amazonia Parc et reposez-vous dans nos chambres luxueuses, nichées au cœur de la jungle. Laissez-vous bercer par les sons apaisants de la nature tout en profitant du confort moderne et d'un service exceptionnel. Nos suites, véritables havres de paix, vous offrent une immersion totale dans un cadre exotique et raffiné. Amazonia Parc, où le luxe rencontre l'aventure. 🌴✨🛏️",
   restaurants_description: "Au cœur de la jungle mystérieuse, Amazonia Parc vous invite à un festin sensoriel inoubliable. Nos restaurants luxueux, perchés dans les arbres, offrent une cuisine raffinée aux saveurs exotiques. Dégustez des plats élaborés avec les trésors de la forêt, dans un cadre où la nature s'invite à votre table. Amazonia Parc, l'expérience culinaire qui éveille l'aventurier gourmet en vous. 🍃🍴✨",
-  location: "Amazonie",
+  location: "Carauari Brésil",
   price: 150_000
 )
 park_jungle.user = user_jeff
@@ -229,7 +229,7 @@ park_desert = Park.new(
   park_description: "Découvrez l'Oasis des Aventuriers!🌵 Au cœur du désert, un monde d'aventures vous attend! 🎢Venez vivre l'expérience ultime dans un parc d'attraction unique où le frisson de la vitesse rencontre la majesté des dunes. À l'Oasis des Aventuriers, chaque manège est une épopée, chaque attraction une découverte.",
   chambers_description: "Évasion Nocturne à l'Oasis des Rêves!🌟 Après une journée d'aventures, reposez-vous sous les étoiles du désert. 🛏️ À l'Oasis des Rêves, chaque chambre est un sanctuaire de confort au milieu des sables. Imaginez-vous endormi sous un ciel étoilé, dans une chambre conçue pour refléter la beauté mystique du déser",
   restaurants_description: "Savourez l'Aventure à la Table des Mirages!🍴 Découvrez les délices culinaires au cœur du désert enchanté. 🌴 Au parc d'attraction des Dunes Enchantées, nos restaurants vous invitent à un voyage gastronomique inoubliable. Laissez-vous transporter par des saveurs exotiques dans un cadre époustouflant où le sable rencontre les étoiles.",
-  location: "désert du Sahara",
+  location: "Djado Niger",
   price: 75_000
 )
 park_desert.user = user_bill
@@ -276,7 +276,7 @@ park_frozen = Park.new(
   park_description: "Venez vivre la magie de l'Arctique au Parc d'Attractions Polaire! 🌟 “Aventure Glacée” 🌟 Plongez dans un monde où le frisson de l'aventure rencontre la splendeur des aurores boréales. Découvrez des montagnes russes qui serpentent à travers des glaciers scintillants, des manèges qui vous feront tournoyer sous les étoiles, et des spectacles éblouissants qui réchaufferont votre cœur malgré le froid polaire",
   chambers_description: "Découvrez le luxe étoilé au “Palais de Glace”! ✨ “Nuits Polaires” ✨ Au cœur du parc d'attractions arctique, nos chambres luxueuses vous invitent à un séjour où le confort rencontre l'immensité glacée. Dormez sous les aurores boréales dans nos suites exclusives, dotées de dômes transparents pour une expérience céleste inoubliable.",
   restaurants_description: "“Gastronomie des Glaces” - Un festin au sommet du monde!🍴 “Saveurs Sublimes” 🍴 Découvrez nos restaurants luxueux, nichés au cœur d'un paysage hivernal époustouflant. Laissez-vous transporter par une cuisine étoilée où chaque plat raconte l'histoire des terres enneigées du pôle Nord.🍷 “Ambiance Cristalline” 🍷 Dans un décor de rêve fait de glace et de lumière douce, nos sommeliers vous guideront à travers une sélection de vins exquis, parfaits pour accompagner vos mets délicats.",
-  location: "pôle nord",
+  location: "Groenland",
   price: 75_000
 )
 park_frozen.user = user_bill
