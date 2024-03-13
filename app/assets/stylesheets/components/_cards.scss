@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
-  width: max-content;
 }
 
 // Smallest device
@@ -38,4 +37,8 @@
   .cards {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+img {
+  height: 70%;
 }
