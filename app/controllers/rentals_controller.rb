@@ -14,12 +14,14 @@ class RentalsController < ApplicationController
 
   def accept
     @rental = Rental.find(params[:id])
-    @rental.validated = true
+    @rental.update(validated: true)
+    redirect_to dashboard_path
   end
 
   def decline
     @rental = Rental.find(params[:id])
-    @rental.validated = false
+    @rental.update(validated: false)
+    redirect_to dashboard_path
   end
 
   private

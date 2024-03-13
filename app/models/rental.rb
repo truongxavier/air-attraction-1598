@@ -1,7 +1,7 @@
 class Rental < ApplicationRecord
   belongs_to :user
   belongs_to :park
-  has_many :reviews
+  has_many :park_reviews
 
   validates :arrival_date, presence: true
   validates :departure_date, presence: true

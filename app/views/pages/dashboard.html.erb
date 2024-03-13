@@ -36,7 +36,7 @@
   <% if current_user.parks.any? %>
     <% current_user.parks.each do |park| %>
       <% park.rentals.each do |rental| %>
-        <li><%= rental.park.name %> <%= rental.user.username %> <%= link_to 'accept', accept_rental_path(rental) %> <%= link_to 'Decline', decline_rental_path(rental) %></li>
+        <li><%= rental.park.name %> by <%= rental.user.username %> <%= link_to 'accept', accept_rental_path(rental), method: :patch %> <%= link_to 'Decline', decline_rental_path(rental), method: :patch %></li>
       <% end %>
     <% end %>
   <% end %>
