@@ -1,17 +1,19 @@
 <h1>Look Out On All The Fantastical Theme Parks, We Have Around The World!!!!</h1>
-
-<div class="cards">
-  <% @parks.each do |park| %>
-    <div class="card-park">
-      <%= cl_image_tag(park.park_photos[0].key) %>
-      <div class="card-park-infos">
-        <div>
-          <h2><%= park.name %></h2>
-          <p><%= park.location %></p>
+<div class="d-flex justify-content-between">
+  <div class="cards">
+    <% @parks.each do |park| %>
+      <div class="card-park">
+        <%= cl_image_tag(park.park_photos[0].key, class:"imgpark") %>
+        <div class="card-park-infos">
+          <div>
+            <h2><%= link_to "park.name", park_path(park) %></h2>
+            <p><%= park.location %></p>
+          </div>
+          <h2 class="card-park-pricing"><%= park.price %>$</h2>
+            <%= cl_image_tag park.user.photo.key, class:'card-park-user avatar-bordered' %>
         </div>
-        <h2 class="card-park-pricing"><%= park.price %>$</h2>
-          <%= cl_image_tag park.user.photo.key, class:'card-park-user avatar-bordered' %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <img id="map" src='https://api.mapbox.com/[...]?access_token=YOUR-TOKEN-HERE'>
 </div>
