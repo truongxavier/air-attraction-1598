@@ -25,3 +25,15 @@
 
  <%= link_to 'Back', parks_path %>
  <%= link_to 'Edit your Park', edit_park_path(@park) %>
+
+
+
+<div class="card-form">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+  <div class="card-form-infos">
+    <h2>Rent <%= @park.name %></h2>
+    <p><% simple_form_for @park do |f| %>
+        <%= f.input :name %>
+    <% end %></p>
+  </div>
+</div>
