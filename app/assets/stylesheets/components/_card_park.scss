@@ -16,14 +16,14 @@
 }
 
 .card-park h2 {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
   color: $white;
   margin: 0;
 }
 
 .card-park p {
-  font-size: 12px;
+  font-size: 18px;
   opacity: .7;
   margin: 0;
   color: $white;
@@ -42,6 +42,6 @@
 .card-park-infos .card-park-user {
   position: absolute;
   right: 16px;
-  top: -20px;
-  width: 40px;
+  top: -40px;
+  //  width: 40px;
 }
