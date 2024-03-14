@@ -1,19 +1,15 @@
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
   <!-- Slides -->
-  <div class="carousel-inner">
+  <div class="carousel-inner justify-content-center">
     <div class="carousel-item active">
       <%= cl_image_tag @park.chambers_photos[0].key, height: 278, width: 278, crop: :fill %>
-    </div>
-    <div class="carousel-item">
       <%= cl_image_tag @park.chambers_photos[1].key, height: 278, width: 278, crop: :fill %>
     </div>
     <div class="carousel-item">
       <%= cl_image_tag @park.chambers_photos[2].key, height: 278, width: 278, crop: :fill %>
-    </div>
-    <div class="carousel-item">
       <%= cl_image_tag @park.chambers_photos[3].key, height: 278, width: 278, crop: :fill %>
     </div>
-    <!-- Ajoutez plus de diapositives ici -->
+
   </div>
   <!-- Contrôles de navigation -->
   <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
