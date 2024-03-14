@@ -4,7 +4,8 @@ class ParksController < ApplicationController
   def index
     @parks = Park.all
     if params[:query].present?
-      @parks = @parks.where("name ILIKE ?", "%#{params[:query]}%")
+      search = "name ILIKE :query OR username ILIKE :query"
+      @parks = @parks.joins(:user).where(search, query: "%#{params[:query]}%")
     end
     @markers = @parks.geocoded.map do |park|
       {
