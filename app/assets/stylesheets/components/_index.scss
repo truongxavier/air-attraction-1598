@@ -11,9 +11,14 @@
 @import "cards";
 @import "cards_home";
 @import "map";
+@import "tabs";
 
 body {
   background-color: $black;
   color: $white;
   text-shadow: 1px 1px 16px rgb(255, 215, 0.5);
+}
+
+a {
+  text-decoration: none;
 }
