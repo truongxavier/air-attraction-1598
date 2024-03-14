@@ -1,56 +1,40 @@
-
-
 <div class="container">
   <div class="row">
-    <h1  class="m-2"><%= @park.name %></h1>
-    <h3  class="m-2"><%= @park.location %></h3>
-    <div class="d-flex">
-      <div class="m-2">
-        <%= cl_image_tag @park.park_photos[0].key, width: 804 %>
-      </div>
-      <div>
-        <div class="ml-2 my-2"><%= cl_image_tag @park.park_photos[1].key, height: 278, width: 278, crop: :fill %></div>
-        <div class="ml-2 my-2"><%= cl_image_tag @park.park_photos[2].key, height: 278, width: 278, crop: :fill %></div>
-      </div>
-      <div>
-        <div class="mx-2 my-2"><%= cl_image_tag @park.park_photos[3].key, height: 278, width: 278, crop: :fill %></div>
-        <div class="mx-2 my-2"><%= cl_image_tag @park.chambers_photos[0].key, height: 278, width: 278, crop: :fill %></div>
-      </div>
-    </div>
+    <%= render 'parks/images_presenting' %>
   </div>
 
-
   <div class="row">
-    <div class="col-7">
+    <div class="col-6 mt-5">
       <h3>Le parc vous présente</h3>
       <p><%= @park.park_description %></p>
       <h4>Price: <%= @park.price %> $ par personne et par jour</h4>
 
-      <h3>Ou vous allez dormir</h3>
+      <h3 class="mt-5">Ou vous allez dormir</h3>
       <p><%= @park.chambers_description %></p>
       <%= render 'parks/carousel_chambers' %>
 
-      <h3>Ou vous allez déguster des merveilles de gastronomie</h3>
+      <h3 class="mt-5">Ou vous allez déguster des merveilles de gastronomie</h3>
       <p><%= @park.restaurants_description %></p>
       <%= render 'parks/carousel_restaurants' %>
 
-
     </div>
-    <div  class="col-5">
-      <% if user_signed_in? %>
-        <%= render 'parks/form_rental' %>
-      <% end  %>
+    <div  class="col-6  mt-5">
+      <div>
+        <% if user_signed_in? %>
+          <div class='review'>
+            <h2 class="m-3">Réservation</h2>
+            <%= render 'parks/form_rental' %>
+          </div>
+        <% end  %>
 
-      <div class="d-flex m-3">
-        <div class='review'>
-          <h2>Reviews</h2>
-          <%= render 'parks/list_reviews' %>
+        <div class="d-flex m-3">
+          <div class='review mt-5'>
+            <h2>Reviews</h2>
+            <%= render 'parks/list_reviews' %>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
+   <%= link_to 'Retour à nos offres', parks_path, class: "btn btn-primary mt-5" %>
 </div>
-
- <%= link_to 'Back', parks_path %>
- <%= link_to 'Edit your Park', edit_park_path(@park) %>

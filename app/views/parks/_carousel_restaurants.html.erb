@@ -3,17 +3,13 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <%= cl_image_tag @park.restaurants_photos[0].key, height: 278, width: 278, crop: :fill %>
-    </div>
-    <div class="carousel-item">
       <%= cl_image_tag @park.restaurants_photos[1].key, height: 278, width: 278, crop: :fill %>
     </div>
     <div class="carousel-item">
       <%= cl_image_tag @park.restaurants_photos[2].key, height: 278, width: 278, crop: :fill %>
-    </div>
-    <div class="carousel-item">
       <%= cl_image_tag @park.restaurants_photos[3].key, height: 278, width: 278, crop: :fill %>
     </div>
-    <!-- Ajoutez plus de diapositives ici -->
+
   </div>
   <!-- Contrôles de navigation -->
   <a class="carousel-control-prev" href="#myCarousel2" role="button" data-bs-slide="prev">
