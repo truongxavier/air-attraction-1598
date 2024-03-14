@@ -1,7 +1,7 @@
 <div class="card-form m-3">
   <%= cl_image_tag(@park.park_photos[0].key, crop: :fill) %>
   <div class="card-form-infos">
-    <h2>Réservez <%= @park.name %> !</h2>
+    <h2>Réservez <%= @park.name %></h2>
     <%= simple_form_for [@park, @rental] do |f| %>
           <%= f.input :arrival_date,
                 as: :string,
