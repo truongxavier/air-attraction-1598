@@ -28,84 +28,29 @@
 
       <h3>Ou vous allez dormir</h3>
       <p><%= @park.chambers_description %></p>
-      <div class="d-flex">
-        <div>
-          <div class="ml-2 my-2"><%= cl_image_tag @park.chambers_photos[0].key, height: 278, width: 278, crop: :fill %></div>
-          <div class="ml-2 my-2"><%= cl_image_tag @park.chambers_photos[1].key, height: 278, width: 278, crop: :fill %></div>
-        </div>
-        <div>
-          <div class="mx-2 my-2"><%= cl_image_tag @park.chambers_photos[2].key, height: 278, width: 278, crop: :fill %></div>
-          <div class="mx-2 my-2"><%= cl_image_tag @park.chambers_photos[3].key, height: 278, width: 278, crop: :fill %></div>
-        </div>
-      </div>
+      <%= render 'parks/carousel_chambers' %>
 
       <h3>Ou vous allez déguster des merveilles de gastronomie</h3>
       <p><%= @park.restaurants_description %></p>
-      <div class="d-flex">
-        <div>
-          <div class="ml-2 my-2"><%= cl_image_tag @park.restaurants_photos[0].key, height: 278, width: 278, crop: :fill %></div>
-          <div class="ml-2 my-2"><%= cl_image_tag @park.restaurants_photos[1].key, height: 278, width: 278, crop: :fill %></div>
-        </div>
-        <div>
-          <div class="mx-2 my-2"><%= cl_image_tag @park.restaurants_photos[2].key, height: 278, width: 278, crop: :fill %></div>
-          <div class="mx-2 my-2"><%= cl_image_tag @park.restaurants_photos[3].key, height: 278, width: 278, crop: :fill %></div>
-        </div>
-      </div>
+      <%= render 'parks/carousel_restaurants' %>
+
 
     </div>
     <div  class="col-5">
       <% if user_signed_in? %>
-        <div class="card-form m-3">
-          <%= cl_image_tag(@park.park_photos[0].key, crop: :fill) %>
-          <div class="card-form-infos">
-            <h2>Réservez <%= @park.name %> !</h2>
-            <%= simple_form_for [@park, @rental] do |f| %>
-              <%= f.input :arrival_date,
-                    as: :string,
-                    input_html: { data: { controller: "datepicker" } } %>
-              <%= f.input :departure_date,
-                    as: :string,
-                    input_html: { data: { controller: "datepicker" } } %>
-              <%= f.input :visitors_number %>
-              <%= f.submit 'Réservez maintenant', class:'btn btn-primary'%>
-            <% end %>
-          </div>
-        </div>
+        <%= render 'parks/form_rental' %>
       <% end  %>
 
       <div class="d-flex m-3">
         <div class='review'>
           <h2>Reviews</h2>
-          <% @park.rentals.each do |rental| %>
-            <% rental.park_reviews.each do |review| %>
-              <div>
-                <div class="border-bottom border-gray pb-3 lh-1">
-                  <div class='d-flex'>
-                    <%= cl_image_tag rental.user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                    <div class="rating"><%= render_stars(review.rating) %></div>
-                    <p><i> posté il y a <%= time_ago_in_words(review.created_at) %></i> </p>
-                  </div>
-                  <%= review.comment %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
+          <%= render 'parks/list_reviews' %>
         </div>
       </div>
 
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
  <%= link_to 'Back', parks_path %>
  <%= link_to 'Edit your Park', edit_park_path(@park) %>

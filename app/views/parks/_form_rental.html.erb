@@ -1,0 +1,17 @@
+<div class="card-form m-3">
+  <%= cl_image_tag(@park.park_photos[0].key, crop: :fill) %>
+  <div class="card-form-infos">
+    <h2>Réservez <%= @park.name %> !</h2>
+    <%= simple_form_for [@park, @rental] do |f| %>
+          <%= f.input :arrival_date,
+                as: :string,
+                label: false,
+                input_html: { data: { controller: "datepicker" }, id: "arrival_date", class: 'd-none text-center mx-auto' } %>
+          <%= f.input :departure_date,
+                as: :hidden,
+                input_html: { data: { controller: "datepicker" }, id: "departure_date"} %>
+        <%= f.input :visitors_number %>
+        <%= f.submit 'Réservez maintenant', class:'btn btn-primary'%>
+    <% end %>
+  </div>
+</div>
