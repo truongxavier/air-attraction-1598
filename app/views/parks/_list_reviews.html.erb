@@ -3,11 +3,11 @@
     <div>
       <div class="border-bottom border-gray pb-3 lh-1">
         <div class='d-flex'>
-          <%= cl_image_tag rental.user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="rating"><%= render_stars(review.rating) %></div>
-          <p><i> posté il y a <%= time_ago_in_words(review.created_at) %></i> </p>
+          <%= cl_image_tag rental.user.photo.key, transformation: [ { gravity: "face", crop: "thumb", width: 150, height: 150 }], class: "avatar-bordered dropdown-toggle m-2", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="rating m-2"><%= render_stars(review.rating) %></div>
+          <p class="m-2"><i> posté il y a <%= time_ago_in_words(review.created_at) %></i> </p>
         </div>
-        <%= review.comment %>
+        <div class="m-2"><%= review.comment %></div>
       </div>
     </div>
   <% end %>
