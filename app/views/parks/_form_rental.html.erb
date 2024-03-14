@@ -9,7 +9,7 @@
                 input_html: { data: { controller: "datepicker" }, id: "arrival_date", class: 'd-none text-center mx-auto' } %>
           <%= f.input :departure_date,
                 as: :hidden,
-                input_html: { data: { controller: "datepicker" }, id: "departure_date"} %>
+                input_html: { data: { controller: "datepicker" }, id: "departure_date", 'data-language': 'fr'} %>
         <%= f.input :visitors_number %>
         <%= f.submit 'Réservez maintenant', class:'btn btn-primary'%>
     <% end %>

@@ -1,4 +1,32 @@
 .flatpickr-calendar {
-  background-color: $black;
-  color: white;
+  background-color: $black !important;
+}
+
+.flatpickr-day {
+  color: white !important;
+}
+
+.flatpickr-disabled{
+  color: rgb(131, 121, 121) !important;
+}
+
+.flatpickr-weekdays {
+  color: white !important;
+}
+
+.flatpickr-months .flatpickr-month {
+  color: white !important;
+}
+
+span.flatpickr-weekday {
+  color: white !important;
+}
+
+.flatpickr-next-month{
+  color: white !important;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  background-color: $black !important;
+  color: white !important;
 }
