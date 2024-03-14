@@ -12,6 +12,7 @@
 @import "cards_home";
 @import "map";
 @import "tabs";
+@import "flatpickr";
 
 body {
   background-color: $black;
@@ -22,4 +23,3 @@ body {
 a {
   text-decoration: none;
 }
-
