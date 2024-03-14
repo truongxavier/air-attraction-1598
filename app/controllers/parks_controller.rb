@@ -3,6 +3,9 @@ class ParksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @parks = Park.all
+    if params[:query].present?
+      @parks = @parks.where("name ILIKE ?", "%#{params[:query]}%")
+    end
     @markers = @parks.geocoded.map do |park|
       {
         lat: park.latitude,
