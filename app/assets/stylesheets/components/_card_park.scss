@@ -1,9 +1,11 @@
 .card-park {
   overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: $black;
+  box-shadow: 0 0 8px rgb(255, 215, 0.5);
   width: 500px;
   height: 500px;
+  border-radius: 10px;
+  margin: 16px;
 }
 
 .card-park > img {
@@ -15,6 +17,7 @@
 .card-park h2 {
   font-size: 16px;
   font-weight: bold;
+  color: $white;
   margin: 0;
 }
 
@@ -22,6 +25,7 @@
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  color: $white;
 }
 
 
@@ -31,6 +35,7 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  background-color: $black;
 }
 
 .card-park-infos .card-park-user {
