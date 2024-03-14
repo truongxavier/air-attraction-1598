@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   resources :rentals, only: [] do
     resources :park_reviews, only: [:create, :new]
   end
-  patch '/rentals/:id', to: "rentals#accept", as: :accept_rental
-  patch '/rentals/:id', to: "rentals#decline", as: :decline_rental
+  patch '/rentals/:id/accept', to: "rentals#accept", as: :accept_rental
+  patch '/rentals/:id/decline', to: "rentals#decline", as: :decline_rental
 
   get '/dashboard', to: "pages#dashboard"
 end

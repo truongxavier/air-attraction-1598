@@ -1,5 +1,5 @@
-<h1>Welcome on your Dashboard</h1>
-<p><%= link_to 'Ajouter Vos Incoryables Parcs', new_park_path, class:"btn btn" %></p>
+<h1 class='text-align: "center"'>Welcome on your Dashboard</h1>
+<p><%= link_to 'Ajouter Vos Incoryables Parcs', new_park_path, class:"btn btn-primary" %></p>
 
 <div class="container">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -10,36 +10,79 @@
       <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#parks" type="button" role="tab" aria-controls="profile" aria-selected="false">Mes Parcs</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#booking" type="button" role="tab" aria-controls="contact" aria-selected="false">Mes Bookings</button>
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#booking" type="button" role="tab" aria-controls="contact" aria-selected="false">Mes réservations</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#parkbooking" type="button" role="tab" aria-controls="contact" aria-selected="false">Les réservations sur mes parc</button>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="profil" role="tabpanel" aria-labelledby="home-tab">
       <div>
-        <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>
-        <div>
-          <%= current_user.username %>
-        </div>
-        <div>
-          <%= current_user.email %>
+        <div class="card-park">
+          <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill %>
+          <div class="card-park-infos">
+            <div>
+              <h1><%= current_user.username %></h1>
+              <h2><%= current_user.email %></h2>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="tab-pane fade" id="parks" role="tabpanel" aria-labelledby="profile-tab">
       <h2>list of your parks:</h2>
         <% current_user.parks.each do |park| %>
-          <ul>
-          <li><%= park.name %><%= link_to "delete the park", park_path(park), data: { turbo_method: :delete, turbo_confirm: "are you sure?"} %></li>
-          </ul>
+          <%= link_to park_path(park) do %>
+            <div class="card-park">
+              <%= cl_image_tag(park.park_photos[0].key, class:"imgpark") %>
+              <div class="card-park-infos">
+                <div>
+                  <h2><%= park.name %></h2>
+                  <p><%= park.location %></p>
+                </div>
+                <h2 class="card-park-pricing"><%= park.price %>$</h2>
+                <%= cl_image_tag park.user.photo.key, class:'card-park-user avatar-bordered' %>
+              </div>
+            </div>
+          <% end %>
+          <%= link_to "Supprimer ce parc!", park_path(park), data: { turbo_method: :delete, turbo_confirm: "are you sure?"}, class:"btn btn-primary" %>
         <% end %>
     </div>
     <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="contact-tab">
-      <h3>list of your parks bookings:</h3>
+      <h3>liste de mes reservations:</h3>
+      <% current_user.rentals.each do |rental| %>
+        <div class="notification">
+                <%= cl_image_tag(rental.park.park_photos[0].key, style: 'width: 150px; height: 150px; border-radius: 50%') %>
+                <div class="notification-content">
+                  <p><small><%= rental.arrival_date %> - <%= rental.departure_date %></small></p>
+                  <p><%= rental.park.name %> </p>
+                </div>
+              </div>
+      <% end %>
+    </div>
+    <div class="tab-pane fade" id="parkbooking" role="tabpanel" aria-labelledby="contact-tab">
       <ul>
       <% if current_user.parks.any? %>
         <% current_user.parks.each do |park| %>
           <% park.rentals.each do |rental| %>
-            <li><%= rental.park.name %> by <%= rental.user.username %> <%= link_to 'accept', accept_rental_path(rental), method: :patch %> <%= link_to 'Decline', decline_rental_path(rental), method: :patch %></li>
+            <% if rental.validated === nil %>
+              <div class="notification">
+                <%= cl_image_tag(park.park_photos[0].key, style: 'width: 150px; height: 150px; border-radius: 50%') %>
+                <div class="notification-content">
+                  <p><small><%= rental.arrival_date %> - <%= rental.departure_date %></small></p>
+                  <p><%= rental.park.name %>, demandé par <%= rental.user.username %> <%= link_to 'Accepter?', accept_rental_path(rental), data: { turbo_method: :patch } %> <%= link_to 'Décliner?', decline_rental_path(rental), data: { turbo_method: :patch } %></p>
+                </div>
+              </div>
+            <% else %>
+              <div class="notification">
+                <%= cl_image_tag(park.park_photos[0].key, style: 'width: 150px; height: 150px; border-radius: 50%') %>
+                <div class="notification-content">
+                  <p><small><%= rental.arrival_date %> - <%= rental.departure_date %></small></p>
+                  <p><li><%= rental.park.name %>, demandé par <%= rental.user.username %> <% if rental.validated %> <i class="fa-solid fa-check" style="color: #63E6BE;"></i> Accepté <% else %> <i class="fa-solid fa-xmark" style="color: #ff0000;"></i> Refusé <% end %> </li></p>
+                </div>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>

@@ -1,0 +1,13 @@
+.notification {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: $black;
+  padding: 8px 16px;
+  box-shadow: 0px 0px 5px rgb(255, 215, 0.5);
+}
+
+.notification .notification-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
