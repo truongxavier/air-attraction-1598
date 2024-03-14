@@ -8,9 +8,9 @@
             <%= text_field_tag :query,
                   params[:query],
                   class: "form-control",
-                  placeholder: "Type a keyword"
+                  placeholder: ""
               %>
-            <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+            <%= submit_tag "Recherche", name: "", class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>
@@ -25,7 +25,7 @@
                 <p><%= park.location %></p>
               </div>
               <h2 class="card-park-pricing"><%= park.price %>$</h2>
-                <%= cl_image_tag park.user.photo.key, class:'card-park-user avatar-bordered' %>
+                <%= cl_image_tag park.user.photo.key, class:'card-park-user avatar-bordered', transformation: [ { gravity: "face", crop: "thumb", width: 150, height: 150 }] %>
             </div>
           </div>
         <% end %>
