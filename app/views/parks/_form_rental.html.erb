@@ -1,17 +1,23 @@
 <div class="card-form m-3">
   <%= cl_image_tag(@park.park_photos[0].key, crop: :fill) %>
-  <div class="card-form-infos">
-    <h2>Réservez <%= @park.name %></h2>
-    <%= simple_form_for [@park, @rental] do |f| %>
-          <%= f.input :arrival_date,
-                as: :string,
-                label: false,
-                input_html: { data: { controller: "datepicker" }, id: "arrival_date", class: 'd-none text-center mx-auto' } %>
-          <%= f.input :departure_date,
+  <div>
+    <div class="card-form-infos"  data-controller="datepicker" data-datepicker-price-value="<%= @park.price %>" data-datepicker-dates-value="<%= @park.rentals.to_json %>">
+      <h2>Réservez <%= @park.name %></h2>
+      <%= simple_form_for [@park, @rental] do |f| %>
+        <%= f.input :arrival_date,
+              as: :string,
+              label: false,
+              input_html: { data: { datepicker_target: "startdate" }, id: "arrival_date", class: 'd-none text-center mx-auto' } %>
+        <%= f.input :departure_date,
                 as: :hidden,
-                input_html: { data: { controller: "datepicker" }, id: "departure_date", 'data-language': 'fr'} %>
-        <%= f.input :visitors_number %>
+                input_html: { data: { datepicker_target: "enddate" }, id: "departure_date"} %>
+        <%= f.input :visitors_number,
+                input_html: { data: { datepicker_target: "peoples" , action:"keyup->datepicker#test" } }%>
         <%= f.submit 'Réservez maintenant', class:'btn btn-primary'%>
-    <% end %>
+      <% end %>
+      <div class="text-center">
+        <div data-datepicker-target="totalprice"></div>
+      </div>
+    </div>
   </div>
 </div>
