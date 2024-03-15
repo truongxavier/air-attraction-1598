@@ -43,13 +43,41 @@ class ParksController < ApplicationController
 
   def edit; end
 
+  # def update
+  #   if @park.update(park_params)
+  #     redirect_to park_path(@park)
+  #   else
+  #     render :edit, status: :unprocessable_entity
+  #   end
+  # end
+
+
   def update
-    if @park.update(park_params)
+    if @park.update(park_params.reject { |k| k == :park_photos || k == :chambers_photos || k == :restaurants_photos })
+      if params[:park][:park_photos].size < 3
+        params[:park][:park_photos].each do |park_photo|
+          @park.park_photos.attach(park_photo)
+        end
+      end
+      if params[:park][:chambers_photos].size < 3
+        params[:park][:chambers_photos].each do |chambers_photo|
+          @park.chambers_photos.attach(chambers_photo)
+        end
+      end
+      if params[:park][:restaurants_photos].size < 3
+        params[:park][:restaurants_photos].each do |restaurants_photo|
+          @park.restaurants_photos.attach(restaurants_photo)
+        end
+      end
+      flash[:success] = 'Updated!'
       redirect_to park_path(@park)
+      # respond_with restaurants_photos @park, location: park_path(park)
     else
-      render :edit, status: :unprocessable_entity
+      flash[:error] = 'Not updated'
+      respond_with park, location: park_path(park)
     end
   end
+
 
   private
 
