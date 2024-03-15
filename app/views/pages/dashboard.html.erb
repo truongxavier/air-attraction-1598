@@ -17,7 +17,7 @@
       <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#booking" type="button" role="tab" aria-controls="contact" aria-selected="false">Mes réservations</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#parkbooking" type="button" role="tab" aria-controls="contact" aria-selected="false">Les réservations sur mes parc</button>
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#parkbooking" type="button" role="tab" aria-controls="contact" aria-selected="false">Les réservations sur mes parcs</button>
     </li>
   </ul>
   <div class="tab-content my-3" id="myTabContent">
@@ -61,7 +61,7 @@
                       <%= simple_form_for [ rental, @park_review ] do |f| %>
                         <%= f.input :comment, label:"commentaire:" %>
                         <%= f.input :rating, label: ('<i class="fa-solid fa-star" style="color: #FFD43B;"></i>').html_safe %>
-                        <%= f.submit %>
+                        <%= f.submit "Poster votre avis", class:"btn btn-primary" %>
                       <% end %>
                     <% end %>
                   </div>
