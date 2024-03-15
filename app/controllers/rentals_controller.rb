@@ -6,7 +6,7 @@ class RentalsController < ApplicationController
     @rental.park = @park
 
     if @rental.save!
-      redirect_to park_path(@park)
+      redirect_to dashboard_path
     else
       #TODO render :new, status: :unprocessable_entity
     end
