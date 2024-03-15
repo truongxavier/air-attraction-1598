@@ -1,6 +1,10 @@
-<h1 class='text-align: "center"'>Welcome on your Dashboard</h1>
-<p><%= link_to 'Ajouter Vos Incoryables Parcs', new_park_path, class:"btn btn-primary" %></p>
 
+<div class="container">
+  <div class="d-flex mb-3">
+    <h1 class='me-5'>Welcome on your Dashboard</h1>
+    <p><%= link_to 'Ajouter Vos Incroyables Parcs', new_park_path, class:"btn btn-primary" %></p>
+  </div>
+</div>
 <div class="container">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
@@ -16,7 +20,7 @@
       <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#parkbooking" type="button" role="tab" aria-controls="contact" aria-selected="false">Les réservations sur mes parc</button>
     </li>
   </ul>
-  <div class="tab-content" id="myTabContent">
+  <div class="tab-content my-3" id="myTabContent">
     <div class="tab-pane fade show active" id="profil" role="tabpanel" aria-labelledby="home-tab">
       <div>
         <div class="card-park">
@@ -31,9 +35,10 @@
       </div>
     </div>
     <div class="tab-pane fade" id="parks" role="tabpanel" aria-labelledby="profile-tab">
-      <h2>list of your parks:</h2>
+      <div class="d-flex">
         <% current_user.parks.each do |park| %>
           <%= link_to park_path(park) do %>
+          <div>
             <div class="card-park">
               <%= cl_image_tag(park.park_photos[0].key, class:"imgpark") %>
               <div class="card-park-infos">
@@ -42,21 +47,37 @@
                   <p><%= park.location %></p>
                 </div>
                 <h2 class="card-park-pricing"><%= park.price %>$</h2>
-                <%= cl_image_tag park.user.photo.key, class:'card-park-user avatar-bordered' %>
+                <%= cl_image_tag park.user.photo.key, class:'card-park-user avatar-bordered', transformation: [ { gravity: "face", crop: "thumb", width: 150, height: 150 }] %>
               </div>
             </div>
+            <%= link_to "Supprimer ce parc!", park_path(park), data: { turbo_method: :delete, turbo_confirm: "are you sure?"}, class:"btn btn-primary ms-3 me-10" %>
+            <%= link_to "Modifier ce parc!", edit_park_path(park), class:"btn btn-primary" %>
+          </div>
           <% end %>
-          <%= link_to "Supprimer ce parc!", park_path(park), data: { turbo_method: :delete, turbo_confirm: "are you sure?"}, class:"btn btn-primary" %>
         <% end %>
+      </div>
     </div>
     <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="contact-tab">
-      <h3>liste de mes reservations:</h3>
       <% current_user.rentals.each do |rental| %>
         <div class="notification">
                 <%= cl_image_tag(rental.park.park_photos[0].key, style: 'width: 150px; height: 150px; border-radius: 50%') %>
                 <div class="notification-content">
-                  <p><small><%= rental.arrival_date %> - <%= rental.departure_date %></small></p>
-                  <p><%= rental.park.name %> </p>
+                  <div>
+                    <p><small><%= rental.arrival_date %> - <%= rental.departure_date %></small></p>
+                    <p><%= rental.park.name %> </p>
+                  </div>
+                  <div>
+                    <% if rental.validated %>
+                      <%= simple_form_for [ rental, @park_review ] do |f| %>
+                        <%= f.input :comment, label:"commentaire:" %>
+                        <%= f.input :rating, label: ('<i class="fa-solid fa-star" style="color: #FFD43B;"></i>').html_safe %>
+                        <%= f.submit %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div >
+                    <% if rental.validated === nil %> <div class="btn btn-info" id="pending"><i class="fa-solid fa-hourglass-start" style="color: #515152;"></i> En attente... </div> <% elsif rental.validated %> <div class="btn btn-success"><i class="fa-solid fa-check" style="color: #63E6BE;"></i> Acceptée </div> <% else %> <div class="btn btn-danger"> <i class="fa-solid fa-xmark" style="color: #ff0000;"></i> Refusée </div> <% end %> </li></p>
+                  </div>
                 </div>
               </div>
       <% end %>
@@ -70,16 +91,26 @@
               <div class="notification">
                 <%= cl_image_tag(park.park_photos[0].key, style: 'width: 150px; height: 150px; border-radius: 50%') %>
                 <div class="notification-content">
-                  <p><small><%= rental.arrival_date %> - <%= rental.departure_date %></small></p>
-                  <p><%= rental.park.name %>, demandé par <%= rental.user.username %> <%= link_to 'Accepter?', accept_rental_path(rental), data: { turbo_method: :patch } %> <%= link_to 'Décliner?', decline_rental_path(rental), data: { turbo_method: :patch } %></p>
+                  <div>
+                    <p><small><%= rental.arrival_date %> - <%= rental.departure_date %></small></p>
+                    <p><%= rental.park.name %>, demandée par <%= rental.user.username %>
+                  </div>
+                  <div>
+                    <%= link_to 'Accepter?', accept_rental_path(rental), data: { turbo_method: :patch }, class:"btn btn-primary" %> <%= link_to 'Décliner?', decline_rental_path(rental), data: { turbo_method: :patch }, class:"btn btn-primary" %></p>
+                  </div>
                 </div>
               </div>
             <% else %>
               <div class="notification">
                 <%= cl_image_tag(park.park_photos[0].key, style: 'width: 150px; height: 150px; border-radius: 50%') %>
                 <div class="notification-content">
-                  <p><small><%= rental.arrival_date %> - <%= rental.departure_date %></small></p>
-                  <p><li><%= rental.park.name %>, demandé par <%= rental.user.username %> <% if rental.validated %> <i class="fa-solid fa-check" style="color: #63E6BE;"></i> Accepté <% else %> <i class="fa-solid fa-xmark" style="color: #ff0000;"></i> Refusé <% end %> </li></p>
+                  <div>
+                    <p><small><%= rental.arrival_date %> - <%= rental.departure_date %></small></p>
+                    <p><li><%= rental.park.name %>, demandée par <%= rental.user.username %>
+                  </div>
+                  <div >
+                    <% if rental.validated %> <div class="btn btn-success"><i class="fa-solid fa-check" style="color: #63E6BE;"></i> Acceptée </div> <% else %> <div class="btn btn-danger"> <i class="fa-solid fa-xmark" style="color: #ff0000;"></i> Refusée </div> <% end %> </li></p>
+                  </div>
                 </div>
               </div>
             <% end %>
