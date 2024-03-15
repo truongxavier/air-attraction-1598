@@ -2,7 +2,6 @@
 @import "alert";
 @import "avatar";
 @import "form_legend_clear";
-@import "navbar";
 @import "card_park";
 @import "card_form";
 @import "banner";
@@ -11,7 +10,6 @@
 @import "cards";
 @import "cards_home";
 @import "map";
-@import "tabs";
 @import "notifications";
 @import "flatpickr";
 @import "form";
@@ -22,8 +20,15 @@ body {
   background-color: $black;
   color: $white;
   text-shadow: 1px 1px 16px rgb(255, 215, 0.5);
+  min-height: 100vh;
+  padding-bottom: 100px;
+  position: relative;
 }
 
 a {
   text-decoration: none;
+}
+
+#pending {
+  text-shadow: 0px 0px 0px $black;
 }
