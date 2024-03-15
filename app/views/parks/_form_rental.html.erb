@@ -12,7 +12,8 @@
                 as: :hidden,
                 input_html: { data: { datepicker_target: "enddate" }, id: "departure_date"} %>
         <%= f.input :visitors_number,
-                input_html: { data: { datepicker_target: "peoples" , action:"keyup->datepicker#test" } }%>
+                input_html: { data: { datepicker_target: "peoples" , action:"keyup->datepicker#test" } },
+                label: "Nombre de visiteurs" %>
         <%= f.submit 'Réservez maintenant', class:'btn btn-primary'%>
       <% end %>
       <div class="text-center">

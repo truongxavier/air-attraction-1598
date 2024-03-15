@@ -1,21 +1,24 @@
-<%= simple_form_for @park do |f| %>
-  <%= f.input :name, label: "nom" %>
-  <%= f.input :location, label: "localisation" %>
-  <%= f.input :park_description, label: "Description du parc" %>
-  <%= f.input :chambers_description, label: "Description des chambres" %>
-  <%= f.input :restaurants_description, label: "Description des restaurants" %>
-  <%= f.input :price, label: "Prix" %>
-  <% @park.park_photos.each do |photo| %>
-    <%= f.hidden_field :park_photos, multiple: true, value: photo.signed_id %>
+<div class="container">
+  <%= simple_form_for @park do |f| %>
+    <%= f.input :name, label: "nom" %>
+    <%= f.input :location, label: "localisation" %>
+    <%= f.input :park_description, label: "Description du parc" %>
+    <%= f.input :chambers_description, label: "Description des chambres" %>
+    <%= f.input :restaurants_description, label: "Description des restaurants" %>
+    <%= f.input :price, label: "Prix" %>
+    <% @park.park_photos.each do |photo| %>
+      <%= f.hidden_field :park_photos, multiple: true, value: photo.signed_id %>
+    <% end %>
+    <%= f.input :park_photos, as: :file, input_html: {multiple: true}, label: "Photos du parc" %>
+    <% @park.chambers_photos.each do |photo| %>
+      <%= f.hidden_field :chambers_photos, multiple: true, value: photo.signed_id %>
+    <% end %>
+    <%= f.input :chambers_photos, as: :file, input_html: {multiple: true}, label: "Photos des chambres" %>
+    <% @park.restaurants_photos.each do |photo| %>
+      <%= f.hidden_field :restaurants_photos, multiple: true, value: photo.signed_id %>
+    <% end %>
+    <%= f.input :restaurants_photos, as: :file, input_html: {multiple: true}, label: "Photos des restaurants" %>
+    <%= f.submit "Envoyer", class:"btn btn-primary"  %>
   <% end %>
-  <%= f.input :park_photos, as: :file, input_html: {multiple: true}, label: "Photos du parc" %>
-  <% @park.chambers_photos.each do |photo| %>
-    <%= f.hidden_field :chambers_photos, multiple: true, value: photo.signed_id %>
-  <% end %>
-  <%= f.input :chambers_photos, as: :file, input_html: {multiple: true}, label: "Photos des chambres" %>
-  <% @park.restaurants_photos.each do |photo| %>
-    <%= f.hidden_field :restaurants_photos, multiple: true, value: photo.signed_id %>
-  <% end %>
-  <%= f.input :restaurants_photos, as: :file, input_html: {multiple: true}, label: "Photos des restaurants" %>
-  <%= f.submit "Ajouter Parc", class:"btn btn-primary"  %>
-<% end %>
+  <%= link_to 'retour au tableau de bord', dashboard_path, class: "btn btn-primary mt-3" %>
+</div>

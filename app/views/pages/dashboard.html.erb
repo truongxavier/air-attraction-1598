@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="d-flex mb-3">
-    <h1 class='me-5'>Welcome on your Dashboard</h1>
+    <h1 class='me-5'>Bienvenue sur votre tableau de bord</h1>
     <p><%= link_to 'Ajouter Vos Incroyables Parcs', new_park_path, class:"btn btn-primary" %></p>
   </div>
 </div>
@@ -39,17 +39,7 @@
         <% current_user.parks.each do |park| %>
           <%= link_to park_path(park) do %>
           <div>
-            <div class="card-park">
-              <%= cl_image_tag(park.park_photos[0].key, class:"imgpark") %>
-              <div class="card-park-infos">
-                <div>
-                  <h2><%= park.name %></h2>
-                  <p><%= park.location %></p>
-                </div>
-                <h2 class="card-park-pricing"><%= park.price %>$</h2>
-                <%= cl_image_tag park.user.photo.key, class:'card-park-user avatar-bordered', transformation: [ { gravity: "face", crop: "thumb", width: 150, height: 150 }] %>
-              </div>
-            </div>
+             <%= render "/shared/card_park", park: park %>
             <%= link_to "Supprimer ce parc!", park_path(park), data: { turbo_method: :delete, turbo_confirm: "are you sure?"}, class:"btn btn-primary ms-3 me-10" %>
             <%= link_to "Modifier ce parc!", edit_park_path(park), class:"btn btn-primary" %>
           </div>

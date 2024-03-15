@@ -17,17 +17,7 @@
     <div class="cards">
       <% @parks.each do |park| %>
         <%= link_to park_path(park) do %>
-          <div class="card-park">
-            <%= cl_image_tag(park.park_photos[0].key, class:"imgpark") %>
-            <div class="card-park-infos">
-              <div>
-                <h2><%= park.name %></h2>
-                <p><%= park.location %></p>
-              </div>
-              <h2 class="card-park-pricing"><%= park.price %>$</h2>
-                <%= cl_image_tag park.user.photo.key, class:'card-park-user avatar-bordered', transformation: [ { gravity: "face", crop: "thumb", width: 150, height: 150 }] %>
-            </div>
-          </div>
+          <%= render "/shared/card_park", park: park %>
         <% end %>
       <% end %>
     </div>
